@@ -1,0 +1,28 @@
+<div style="margin-left: 20px">
+    <div>
+        <h2>{{ titlePage }}</h2>
+        <button routerLink="/admin/add-foods" mat-raised-button color="primary" style="margin-bottom: 10px;"
+        >Add</button>
+    </div>
+  <table style="text-align: center;">
+    <thead style="background-color: rgb(60, 255, 0);">
+      <tr >
+        <th *ngFor="let col of colTab">
+          {{ col }}
+        </th>
+      </tr>
+    </thead>
+    <tbody style="background-color: rgb(0, 255, 221);">
+      <tr *ngFor="let data of dataFoods; let i = index" [attr.data-index]="i">
+        <td>{{ i+1 }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.lokasi }}</td>
+        <td>{{ data.deskripsi }}</td>
+        <td>
+          <button mat-raised-button color="accent" style="margin-right:10px;" routerLink="/admin/edit-foods/{{data.id}}">Edit</button>
+          <button mat-raised-button color="warn" (click)="deleteData(data.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
